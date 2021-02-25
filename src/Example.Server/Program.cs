@@ -26,6 +26,7 @@ namespace CodeWithSaar.Example.Server
 
                 Console.WriteLine("[SERVER] Sending greeting...");
                 await namedPipeServer.SendMessageAsync("Hello~from server").ConfigureAwait(false);
+                await namedPipeServer.SendMessageAsync("Hello again from server").ConfigureAwait(false);
                 Console.WriteLine("[SERVER] Greeting sent.");
 
                 Console.WriteLine("[SERVER] Guessing what will the client say...");

@@ -26,6 +26,9 @@ namespace CodeWithSaar.Example.Client
 
                 string whatTheServerSay = await namedPipeClient.ReadMessageAsync().ConfigureAwait(false);
                 Console.WriteLine("[CLIENT] The server says: {0}", whatTheServerSay);
+                whatTheServerSay = await namedPipeClient.ReadMessageAsync().ConfigureAwait(false);
+                Console.WriteLine("[CLIENT] The server says(2): {0}", whatTheServerSay);
+
                 string reply = "Hey from the client";
                 Console.WriteLine("[CLIENT] Telling the server: {0}", reply);
                 await namedPipeClient.SendMessageAsync(reply);

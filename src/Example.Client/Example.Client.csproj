@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DuplexNamedPipeService\DuplexNamedPipeService.csproj" />
+    <ProjectReference Include="..\DataContracts\DataContracts.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

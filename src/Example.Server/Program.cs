@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CodeWithSaar.IPC;
+using Example.DataContracts;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -18,6 +19,7 @@ namespace CodeWithSaar.Example.Server
             ILogger<DuplexNamedPipeService> logger = LoggerFactory.Create(config => { }).CreateLogger<DuplexNamedPipeService>();
             using (INamedPipeServerService namedPipeServer = new DuplexNamedPipeService(options, logger))
             {
+                // Send messages back and forth
                 Console.WriteLine("[SERVER] Waiting for connection.");
                 await namedPipeServer.WaitForConnectionAsync(default).ConfigureAwait(false);
                 Console.WriteLine("[SERVER] Connected.");
@@ -29,6 +31,15 @@ namespace CodeWithSaar.Example.Server
                 Console.WriteLine("[SERVER] Guessing what will the client say...");
                 string whatTheClientSay = await namedPipeServer.ReadMessageAsync().ConfigureAwait(false);
                 Console.WriteLine("[SERVER] The client says: {0}", whatTheClientSay);
+
+                // Send objects back and forth
+                Customer serverCustomer = new Customer()
+                {
+                    Name = "Server Customer",
+                };
+                await namedPipeServer.SendAsync(serverCustomer).ConfigureAwait(false);
+                Customer clientCustomer = await namedPipeServer.ReadAsync<Customer>().ConfigureAwait(false);
+                Console.WriteLine("[SERVER] Client customer name: {0}", clientCustomer.Name);
             }
         }
     }

@@ -1,9 +1,10 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace CodeWithSaar.IPC
 {
-    internal interface INamedPipeServerService : INamedPipeOperations
+    public interface INamedPipeServerService : INamedPipeOperations, IDisposable
     {
         Task WaitForConnectionAsync(CancellationToken cancellationToken);
     }

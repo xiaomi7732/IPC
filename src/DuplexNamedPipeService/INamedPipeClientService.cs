@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CodeWithSaar.IPC
 {
-    internal interface INamedPipeClientService: INamedPipeOperations
+    public interface INamedPipeClientService: INamedPipeOperations, IDisposable
     {
         Task ConnectAsync(TimeSpan timeout, CancellationToken cancellationToken);
     }

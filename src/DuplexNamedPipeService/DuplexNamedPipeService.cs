@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace CodeWithSaar.IPC
 {
-    internal sealed class DuplexNamedPipeService : INamedPipeServerService, INamedPipeClientService, IDisposable
+    public sealed class DuplexNamedPipeService : INamedPipeServerService, INamedPipeClientService, IDisposable
     {
         private SemaphoreSlim _threadSafeLock = new SemaphoreSlim(1, 1);
         private PipeStream _pipeStream;

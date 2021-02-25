@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace CodeWithSaar.IPC
 {
-    internal interface INamedPipeOperations
+    public interface INamedPipeOperations
     {
         Task SendMessageAsync(string message);
         Task<string> ReadMessageAsync();

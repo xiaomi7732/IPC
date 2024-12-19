@@ -23,8 +23,18 @@ internal class ChattyClient : BackgroundService
             using (INamedPipeClientService namedPipeClient = _namedPipeClientFactory.CreateClient())
             {
                 _logger.LogInformation("[CLIENT] Connecting to named pipe server...");
-                await namedPipeClient.ConnectAsync(TimeSpan.FromSeconds(10), stoppingToken).ConfigureAwait(false);
-                _logger.LogInformation("[CLIENT] Connected to named pipe server.");
+                try
+                {
+
+                    await namedPipeClient.ConnectAsync(TimeSpan.FromSeconds(10), stoppingToken).ConfigureAwait(false);
+                    _logger.LogInformation("[CLIENT] Connected to named pipe server.");
+                }
+                catch (TimeoutException)
+                {
+                    _logger.LogWarning("Timeout connecting to server. Is the server up?");
+                    await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken).ConfigureAwait(false);
+                    continue;
+                }
 
                 string whatTheServerSay = await namedPipeClient.ReadMessageAsync().ConfigureAwait(false);
                 _logger.LogInformation("[CLIENT] The server says: {content}", whatTheServerSay);

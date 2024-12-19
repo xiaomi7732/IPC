@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Server", "Example.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.WorkerServer", "Example.WorkerServer\Example.WorkerServer.csproj", "{77A35752-5EC4-4E23-8A20-DF390EE9D993}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.WorkerClient", "Example.WorkerClient\Example.WorkerClient.csproj", "{AC52C2C4-ADA3-49BA-B570-A2FF0D323521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{77A35752-5EC4-4E23-8A20-DF390EE9D993}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77A35752-5EC4-4E23-8A20-DF390EE9D993}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77A35752-5EC4-4E23-8A20-DF390EE9D993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC52C2C4-ADA3-49BA-B570-A2FF0D323521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC52C2C4-ADA3-49BA-B570-A2FF0D323521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC52C2C4-ADA3-49BA-B570-A2FF0D323521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC52C2C4-ADA3-49BA-B570-A2FF0D323521}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

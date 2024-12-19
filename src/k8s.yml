@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: ipc-example
+  labels:
+    app: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: chattyipcclient:0.0.2
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      initContainers:
+        - name: ipc-server-sidecar
+          image: ipc-example-worker-server:0.0.5
+          restartPolicy: Always
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

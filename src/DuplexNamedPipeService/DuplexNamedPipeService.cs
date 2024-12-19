@@ -101,6 +101,7 @@ namespace CodeWithSaar.IPC
             using (StreamWriter writer = new StreamWriter(_pipeStream, encoding: Encoding.UTF8, bufferSize: -1, leaveOpen: true))
             {
                 await writer.WriteLineAsync(message).ConfigureAwait(false);
+                await writer.FlushAsync().ConfigureAwait(false);
             }
         }
 

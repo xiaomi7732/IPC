@@ -33,6 +33,10 @@ internal class IPCServer : BackgroundService
 
                 _logger.LogInformation("[SERVER] Sending greeting...");
                 await namedPipeServer.SendMessageAsync("Hello~from server").ConfigureAwait(false);
+
+                _logger.LogWarning("[SERVER] Taking a break. Why is this needed?");
+                await Task.Delay(TimeSpan.FromSeconds(1), stoppingToken).ConfigureAwait(false);
+
                 await namedPipeServer.SendMessageAsync("Hello again from server").ConfigureAwait(false);
                 _logger.LogInformation("[SERVER] Greeting sent.");
 
